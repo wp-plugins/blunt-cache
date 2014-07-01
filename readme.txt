@@ -79,7 +79,7 @@ Safe to add to themes and plugins, does its own checking to see if another insta
 
 == Screenshots ==
 
-There are no screenshots. This is purely for development and there is no user interface. See [Other Notes](http://wordpress.org/plugins/blunt-ajax/other_notes/) for documentation.
+There are no screenshots. This is purely for development and there is no user interface. See [Other Notes](http://wordpress.org/plugins/blunt-cache/other_notes/) for documentation.
 
 == Other Notes ==
 
