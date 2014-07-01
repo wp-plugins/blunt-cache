@@ -103,12 +103,12 @@ You can pass any string value as a key for your fragment of object. The actual k
 
 Some Examples of Unique Keys to Use:
 
-* A key for a fragment or object generated in a specific file: $key = __FILE__
-* The 3rd key generated in a specific file: $key = __FILE__.'-3';
-* A key for a fragment or object generated for a specific URL: $key = $_SERVER['REQUEST_URI']
-* The 4th key generated for a specific URL: $key = $_SERVER['REQUEST_URI'].'-4';
-* A key for a fragment or object generated in a specific file for a specific page: $key = __FILE__.$_SERVER['REQUEST_URI']
-* The 2nd key generated in a specific file for a specific URL: $key = __FILE__.$_SERVER['REQUEST_URI'].'-3'
+* A key for a fragment or object generated in a specific file: `$key = __FILE__;`
+* The 3rd key generated in a specific file: `$key = __FILE__.'-3';`
+* A key for a fragment or object generated for a specific URL: `$key = $_SERVER['REQUEST_URI'];`
+* The 4th key generated for a specific URL: $key = `$_SERVER['REQUEST_URI'].'-4';`
+* A key for a fragment or object generated in a specific file for a specific page: `$key = __FILE__.$_SERVER['REQUEST_URI'];`
+* The 2nd key generated in a specific file for a specific URL: `$key = __FILE__.$_SERVER['REQUEST_URI'].'-3';`
 
 **Set Default $ttl**
 
