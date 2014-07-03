@@ -186,7 +186,6 @@ http://www.yoursite.com/?blunt-cache=clear
 
 = Another Caching Plugin? =
 I needed:
-
 * Something that was easy to use without complex coding
 * Something that I could add quickly to existing sites
 * Something that I can quickly add in on new sites
