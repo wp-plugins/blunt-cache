@@ -14,6 +14,8 @@ Simple Fragment and Object Caching using WP Transients API
 
 Blunt Cache is a persistent fragment and object chache for those of us that cannot use full page caching.
 
+**This plugin is meant for developers and requires code changes to your theme *(and/or plugins)*. Please be sure to read the [Documentation](http://wordpress.org/plugins/blunt-cache/other_notes/).**
+
 = Fragment Caching =
 
 Capture and cache the HTML output of any section of code. Useful for storing HTML that is expensive to generate while leaving portions of the page that do not take much time or contain dynamic portions alone.
@@ -22,13 +24,15 @@ Capture and cache the HTML output of any section of code. Useful for storing HTM
 
 Capture and cache any object. Run a WP_query and cache the results. Store any variable that is time consuming to generate.
 
+Most object caching scripts I've seen that override [WP_Object_Cache](http://codex.wordpress.org/Class_Reference/WP_Object_Cache) are all or nothing, or require you to define what not to cache, I think. Seriously, I just find them just a PITA to use. I don't wany to do complex configurations to do something that should be really simple. This plugin will let you pick and choose what to cache persistantly without the hassle. *Although this means that we can't cache the main query, so it has its downside.*
+
 = WP Transients API =
 
-Uses the [WP Transients API](http://codex.wordpress.org/Transients_API) to store cached objects and html. This means that the cache data is stored in the _options table in the DB. The small number of DB calls used during the caching process should take less time.
+Uses the [WP Transients API](http://codex.wordpress.org/Transients_API) to store cached objects and html. This means that the cache data is stored in the _options table in the DB and does require some queries. The small number of simple DB qureies used during the caching process should take less time.
 
 = Uses Filters and Actions =
 
-You use the cache by using [apply_filters](http://codex.wordpress.org/Function_Reference/apply_filters) and [do_action](http://codex.wordpress.org/Function_Reference/do_action) functions instead of calling functions of the plugin or instantiating a new object for every fragment and object to be cached. This means that you do not need to worry about checking to see that functions exist before you can use them. It also means that you can deactivate the plugin without worrying about your site breaking if you do. Need to do some work on the site and test, don't want the cache to work while your doing it, just deactivate it.
+You use the cache by using [apply_filters](http://codex.wordpress.org/Function_Reference/apply_filters) and [do_action](http://codex.wordpress.org/Function_Reference/do_action) functions instead of calling functions of the plugin or instantiating a new object for every fragment and object to be cached. This means that you do not need to worry about checking to see that functions exist before you can use them. It also means that you can deactivate the plugin without worrying about your site breaking if you do. Need to do some work on the site and test, don't want the cache to work while your doing it, just deactivate it, no files to remove.
 
 = Set Expirations =
 
@@ -83,11 +87,13 @@ There are no screenshots. This is purely for development and there is no user in
 
 == Other Notes ==
 
+
 = Documentation =
+
 
 ***This plugin does not work on multsite installations.***
 
-***This plugin is not for those that are already using another caching system.***
+***This plugin is not for those that are already using another caching system or plugin.***
 
 **Standard Variables**
 The following variables are used throughout this documentation:
