@@ -24,7 +24,7 @@ Capture and cache the HTML output of any section of code. Useful for storing HTM
 
 Capture and cache any object. Run a WP_query and cache the results. Store any variable that is time consuming to generate.
 
-Most object caching scripts I've seen that override [WP_Object_Cache](http://codex.wordpress.org/Class_Reference/WP_Object_Cache) are all or nothing, or require you to define what not to cache, I think. Seriously, I just find them just a PITA to use. I don't wany to do complex configurations to do something that should be really simple. This plugin will let you pick and choose what to cache persistantly without the hassle. *Although this means that we can't cache the main query, so it has its downside.*
+Most object caching scripts I've seen that override [WP_Object_Cache](http://codex.wordpress.org/Class_Reference/WP_Object_Cache) are all or nothing, or require you to define what not to cache, I think. Seriously, I just find them a PITA to use. I don't want to do complex configurations to do something that should be really simple. This plugin will let you pick and choose what to cache persistantly without the hassle. *Although this means that we can't cache the main query, so it has its downside.*
 
 = WP Transients API =
 
@@ -48,7 +48,7 @@ Clear the entire cache at any time by adding ?blunt-query=clear to any url on yo
 
 Clear individual fragments or objects from the cache.
 
-I have not added any mechanism to detect when items are updated or need to be cleared. I assume that you'll know when you need to clear the cache or that you'll write code that can use the action to clear individual fragments or objects when this needs to be accomplished.
+I have not added any mechanism to detect when items are updated or need to be cleared. I assume that you'll know when you need to clear the cache or that you'll write code that can use the action to clear individual fragments or objects when this needs to be accomplished. We'll see how much use this gets. If there's a lot of people using it then I'll consider figuring out how to add something.
 
 = Cleans Up After Itself =
 
@@ -60,7 +60,7 @@ No need to install any other caching plugin to make it work.
 
 = Visit GitHub =
 
-[GitHub](https://github.com/Hube2/blunt-cache)
+Visit the [GitHub](https://github.com/Hube2/blunt-cache) repo for this plugin.
 
 = Add to Themes and Plugins =
 
@@ -195,6 +195,9 @@ I needed:
 
 Add all that up and find something, I couldn't. Even if you can find most of it the fact that most caching plugins try to be all things to all people make them extremely complicated to use for fragments and objects.
 
+= Isn't Object Caching in this plugin just a wrapper for the Transients API? =
+
+Yes, it is. But I was building a plugin for caching fragments using hooks and filters and I decided that I would include object caching as well. Besides the Transients API does not give you any easy way to delete all of your transients. This plugin keeps track of what has been cached and allows you to clear that cache easily, or turn it off. If you use the transient functions then they are always on, good luck debuging or seeing changes to your site before they expire naturally unless you plan to go through the added effort of adding actions to all of the admin save and update hooks.
 
 == Changelog ==
 
