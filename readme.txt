@@ -24,11 +24,11 @@ Capture and cache the HTML output of any section of code. Useful for storing HTM
 
 Capture and cache any object. Run a WP_query and cache the results. Store any variable that is time consuming to generate.
 
-Most object caching scripts I've seen that override [WP_Object_Cache](http://codex.wordpress.org/Class_Reference/WP_Object_Cache) are all or nothing, or require you to define what not to cache, I think. Seriously, I just find them a PITA to use. I don't want to do complex configurations to do something that should be really simple. This plugin will let you pick and choose what to cache persistantly without the hassle. *Although this means that we can't cache the main query, so it has its downside.*
+Most object caching scripts I've seen that override [WP_Object_Cache](http://codex.wordpress.org/Class_Reference/WP_Object_Cache) are all or nothing, or require you to define what not to cache, I think. Seriously, I just find them a PITA to use. I don't want to do complex configurations or coding to do something that should be really simple. This plugin will let you pick and choose what to cache persistantly without the hassle. *Although this means that we can't cache the main query, so it has its downside.*
 
 = WP Transients API =
 
-Uses the [WP Transients API](http://codex.wordpress.org/Transients_API) to store cached objects and html. This means that the cache data is stored in the _options table in the DB and does require some queries. The small number of simple DB qureies used during the caching process should take less time.
+Uses the [WP Transients API](http://codex.wordpress.org/Transients_API) to store cached objects and html fragments. This means that the cache data is stored in the options table in the DB and does require some queries. The small number of simple DB qureies used during the caching process should take less time.
 
 = Uses Filters and Actions =
 
@@ -40,7 +40,7 @@ You can set the default experation time and the experation of individual fragmen
 
 = Unique Keys =
 
-You supply the unique key names for storing fragments and objects. Share the same fragments in a single request or across mulitple requests.
+You supply the unique key names for storing fragments and objects. Share the same fragments and objects in a single request or across mulitple requests, a single template file or multiple template files.
 
 = Clearing the Cache = 
 
@@ -54,9 +54,9 @@ I have not added any mechanism to detect when items are updated or need to be cl
 
 Clearing the cache or deactivating this plugin will remove all transient data that it has created so you don't need to worry about crap building up in you DB.
 
-= Works all by itself =
+= Works all by itself (almost) =
 
-No need to install any other caching plugin to make it work.
+No need to install any other caching plugin to make it work, but it does require adding code to your templates and/or plugins. This is not much different than the transient api.
 
 = Visit GitHub =
 
@@ -95,6 +95,8 @@ There are no screenshots. This is purely for development and there is no user in
 
 ***This plugin is not for those that are already using another caching system or plugin.***
 
+***This plugin is for developers that need or want to decide what is cached when and for how long.***
+
 **Standard Variables**
 The following variables are used throughout this documentation:
 
@@ -113,8 +115,8 @@ Some Examples of Unique Keys to Use:
 * The 3rd key generated in a specific file: `$key = __FILE__.'-3';`
 * A key for a fragment or object generated for a specific URL: `$key = $_SERVER['REQUEST_URI'];`
 * The 4th key generated for a specific URL: $key = `$_SERVER['REQUEST_URI'].'-4';`
-* A key for a fragment or object generated in a specific file for a specific page: `$key = __FILE__.$_SERVER['REQUEST_URI'];`
-* The 2nd key generated in a specific file for a specific URL: `$key = __FILE__.$_SERVER['REQUEST_URI'].'-3';`
+* A key for a fragment or object generated in a specific file for a specific URL: `$key = __FILE__.$_SERVER['REQUEST_URI'];`
+* The 2nd key generated in a specific file for a specific URL: `$key = __FILE__.$_SERVER['REQUEST_URI'].'-2';`
 
 **Set Default $ttl**
 
@@ -186,6 +188,7 @@ http://www.yoursite.com/?blunt-cache=clear
 
 = Another Caching Plugin? =
 I needed:
+
 * Something that was easy to use without complex coding
 * Something that I could add quickly to existing sites
 * Something that I can quickly add in on new sites
