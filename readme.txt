@@ -3,7 +3,7 @@ Contributors: Hube2
 Tags: cache, caching, performance, object, fragment, transient, persistent
 Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 Donate link:  https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hube02%40earthlink%2enet&lc=US&item_name=Donate%20to%20Blunt%20Cache%20WordPress%20Plugin&no_note=0&cn=Add%20special%20instructions%20to%20the%20seller%3a&no_shipping=1&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -202,6 +202,9 @@ Add all that up and find something, I couldn't. Even if you can find most of it 
 Yes, it is. But I was building a plugin for caching fragments using hooks and filters and I decided that I would include object caching as well. Besides the Transients API does not give you any easy way to delete all of your transients. This plugin keeps track of what has been cached and allows you to clear that cache easily, or turn it off. If you use the transient functions then they are always on, good luck debuging or seeing changes to your site before they expire naturally unless you plan to go through the added effort of adding actions to all of the admin save and update hooks.
 
 == Changelog ==
+
+= 0.0.2 =
+* Added check to plugin php file to ensure file is not accessed directly
 
 = 0.0.1 =
 * initial release of public code

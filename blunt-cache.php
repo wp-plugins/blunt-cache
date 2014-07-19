@@ -4,53 +4,27 @@
     Plugin Name: Blunt Cache
     Plugin URI: https://github.com/Hube2/blunt-cache
     Description: Simple Fragment and Object Caching using WP Transients API
+    Version: 0.0.2
     Author: John A. Huebner II
     Author URI: https://github.com/Hube2
-    Version: 0.0.1
+    License: GPL v2 or later
+    
+    Blunt Cache Plugin
+    Copyright (C) 2012, John A. Huebner II, hube02@earthlink.net
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 2 of the License, or
+    (at your option) any later version.
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details http://www.gnu.org/licenses
   */
-  
-  /*
-    Usage:
-        
-        key names must be no more than 40 characters in length
-        
-        Set Default ttl
-  
-            function set_blunt_cache_ttl($ttl) {
-              $ttl = 60 * 60 * 6; // 6 hours
-              return $ttl;
-            }
-            add_filter('blunt_cache_ttl', 'set_cache_ttl');
-        
-        Fragment Cache
-        
-            if (!apply_filters('blunt_cache_frag_check', false, $key)) {
-              // code to output and cache
-            }
-            do_action('blunt_cache_frag_output_save', $key, $ttl);
-        
-        
-        Object Cache
-            
-            if (($object = apply_filters('blunt_cache_get_object', false, $key)) === false) {
-              $object = 'built your object here';
-              do_action('blunt_cache_object_save', $object, $key, $ttl);
-            }
-            
-        Remove/clear a single fragment or object form the cache
-            
-            do_action('blunt_cache_uncache', $type, $key);
-            
-              $type = object or fragment
-            
-        
-        Clear the entire Cache
-            
-            add the following query string to any page on your site
-            
-            ?blunt-cache=clear
-            
-  */
+	
+	// If this file is called directly, abort.
+	if (!defined('WPINC')) {die;}
   
   if (!class_exists('blunt_cache')) {
   
