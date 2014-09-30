@@ -3,7 +3,7 @@ Contributors: Hube2
 Tags: cache, caching, performance, object, fragment, transient, persistent
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 0.0.2
+Stable tag: 0.1.0
 Donate link:  https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hube02%40earthlink%2enet&lc=US&item_name=Donate%20to%20Blunt%20Cache%20WordPress%20Plugin&no_note=0&cn=Add%20special%20instructions%20to%20the%20seller%3a&no_shipping=1&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -170,6 +170,8 @@ if (($object = apply_filters('blunt_cache_get_object', false, $key)) === false) 
 
 **Clearing Cache Values**
 
+Version 0.1.0 now includes automatic clearing of the cache and a mechanism for altering when the cache is automatically cleared. For backward compatibility the previous methods of clearing the cache have not been removed.
+
 To remove a single item from the item cache
 
 `
@@ -183,6 +185,16 @@ To clear the entire cache
 `
 http://www.yoursite.com/?blunt-cache=clear
 `
+
+Setting automatic chache clearing. To determine when the cache is cleared you can add the following to your theme functions.php file.
+`
+define('BLUNT_CACHE_CLEAR_ACTIONS', 'admin_init');
+`
+The value of the constant should be a comma separeted list of WP hooks that will cause the cache to be cleared. If you do not define this constant then the default value is "admin_init" (as shown above). This means that the cache will be cleared on every admin page load. Please see [Plugin API/Action Reference](http://codex.wordpress.org/Plugin_API/Action_Reference) in the [WordPress Codex](http://codex.wordpress.org/) for more information.
+
+If the value of this constant evaluates to false (NULL, false, an empty string or 0 [Zerow]) then the cache will never be automatically cleared as the same way that it worked before.
+
+You can set the cache to clear on any valid WP hook. 
 
 == Frequently Asked Questions == 
 
@@ -202,6 +214,9 @@ Add all that up and find something, I couldn't. Even if you can find most of it 
 Yes, it is. But I was building a plugin for caching fragments using hooks and filters and I decided that I would include object caching as well. Besides the Transients API does not give you any easy way to delete all of your transients. This plugin keeps track of what has been cached and allows you to clear that cache easily, or turn it off. If you use the transient functions then they are always on, good luck debuging or seeing changes to your site before they expire naturally unless you plan to go through the added effort of adding actions to all of the admin save and update hooks.
 
 == Changelog ==
+
+= 0.1.0 =
+* Added automatic clearing of cache, see documentation for more information
 
 = 0.0.2 =
 * Added check to plugin php file to ensure file is not accessed directly
