@@ -90,9 +90,6 @@ There are no screenshots. This is purely for development and there is no user in
 
 = Documentation =
 
-
-***This plugin does not work on multsite installations.***
-
 ***This plugin is not for those that are already using another caching system or plugin.***
 
 ***This plugin is for developers that need or want to decide what is cached when and for how long.***
